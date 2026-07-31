@@ -27,7 +27,7 @@ export default function SafariHeader() {
             <div className="col-12 col-md-3">
                 <div className="navbar-brand">
                     <Link to='/'>
-                        <img width="150px" alt='TourExperts Logo' src="/images/tourLogo.png" />
+                        <img width="150px" alt='TourExperts Logo' src="/images/tourLogo1.png" />
                     </Link>
                 </div>
             </div>

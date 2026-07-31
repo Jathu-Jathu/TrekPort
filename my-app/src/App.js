@@ -48,6 +48,7 @@ import UserList from './components/admin/userList';
 import UpdateUser from './components/admin/updateUser';
 import TourReviewList from './components/admin/tourReviewList';
 import SafariReviewList from './components/admin/safariReviewList';
+import ChatWidget from './components/ChatWidget';
 
 
 
@@ -113,6 +114,7 @@ function App() {
               <Route path='/admin/safariReviews' element={<ProtectedRoute isAdmin={true}><SafariReviewList/></ProtectedRoute> } />
             </Route>
           </Routes>
+          <ChatWidget />
         </HelmetProvider>
       </div>
     </Router>

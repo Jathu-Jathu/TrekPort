@@ -799,3 +799,29 @@ ul.CTAs a {
   font-size: 0.8rem;
   color: grey;
 }
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #171d41;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #232f3e;
+    color: white;
+}
+
+.mt-3 {
+    margin-top: 16px;
+}
+

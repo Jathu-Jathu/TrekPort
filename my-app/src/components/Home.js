@@ -7,6 +7,7 @@ import MetaData from "./layouts/MetaData";
 import Pagination from 'react-js-pagination';
 import Loader from './layouts/loader';
 import { Link } from "react-router-dom";
+import ChatWidget from "./ChatWidget";
 
 
 
@@ -67,6 +68,8 @@ export default function Home() {
                     <Link to="/safaris" className="btn btn-primary btn-block mt-3">
                         Trending Safari
                     </Link>
+
+                    <ChatWidget/>
 
                 </Fragment>
             }
