@@ -1,28 +1,51 @@
 # 🌍 TrekPort - Travel Management System
 
-A full-stack travel management application built with the MERN stack that enables users to explore tour packages, make bookings, manage reservations, and download invoices through an intuitive web interface.
+A full-stack travel management application built with the MERN stack, allowing users to explore tour and safari packages, make bookings, manage reservations, download invoices, and receive real-time travel assistance through an AI-powered chatbot.
 
 ## 🛠️ Tech Stack
 
 - ⚛️ React.js
+- 🎨 Tailwind CSS
 - 🟢 Node.js
 - 🚂 Express.js
 - 🍃 MongoDB
-- 🎨 Tailwind CSS
+- 🤖 Groq API (LLaMA 3.1)
+- 🔐 JWT Authentication
 
 ## ✨ Features
 
+### 👤 User Features
+
 - User authentication and authorization
-- Tour and safari package management
-- Complete CRUD operations for packages
+- Browse tour and safari packages
+- View detailed package information
 - Online tour and safari booking
-- Booking validation and management
-- Admin dashboard for managing tours and safaris
-- Payment verification and booking status updates
+- Booking history and management
 - Invoice generation and download
-- User booking history
 - Review and rating system
+
+### 👨‍💼 Admin Features
+
+- Admin dashboard
+- Tour management (CRUD)
+- Safari package management (CRUD)
+- Booking verification
+- Booking status updates
+- Package validation and management
+
+### 🤖 AI Travel Assistant
+
+- Real-time AI-powered travel assistance
+- Tour and safari package recommendations
+- Booking guidance and support
+- Travel tips and destination information
+- Instant responses using Groq LLaMA 3.1
+
+### ⚡ Additional Features
+
+- Payment verification
 - Responsive user interface
+- Secure REST API integration
 
 ## 📸 Screenshots
 
@@ -30,11 +53,19 @@ A full-stack travel management application built with the MERN stack that enable
 
 ![Home Page](home-page.png)
 
+### 🤖 AI Travel Assistant
+
+![AI Travel Assistant](AI-powered-travel-assistant.png)
+
+### 🦁 Safari Packages
+
+![Safari Packages](safari-home.png)
+
 ### 👨‍💼 Admin Dashboard
 
 ![Admin Dashboard](admin-dashboard.png)
 
-### ➕ Add New Tour (Admin)
+### ➕ Add New Tour
 
 ![Add New Tour](add-new-tour(admin).png)
 
@@ -42,14 +73,14 @@ A full-stack travel management application built with the MERN stack that enable
 
 ![Tour Details](tour-details.png)
 
-### 🚍 Tour Bookings
+### 📋 Tour Management
 
-![Tour Bookings](tour-bookings.png)
+![Tour Management](tour-list.png)
 
-### 🦁 Safari Bookings
+### 🚍 Safari Bookings
 
-![Safari Bookings](safari-bookings.png)
+![Safari Bookings](safari-bookings(admin).png)
 
-### 📋 My Bookings
+### 📝 User Bookings
 
-![My Bookings](user-booking.png)
+![User Bookings](user-bookings.png)
