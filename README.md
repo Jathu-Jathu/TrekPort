@@ -63,7 +63,7 @@ A full-stack travel management application built with the MERN stack, allowing u
 
 ### 👨‍💼 Admin Dashboard
 
-![Admin Dashboard](admin-dashboard1.png)
+![Admin Dashboard](admin-dashboard2.png)
 
 ### ➕ Add New Tour
 
