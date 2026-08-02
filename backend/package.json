@@ -8,7 +8,7 @@
     "prod": "set NODE_ENV=production && nodemon backend/server.js"
   },
   "keywords": [],
-  "author": "Pirathap",
+  "author": "Jathu",
   "license": "ISC",
   "type": "commonjs",
   "description": "",

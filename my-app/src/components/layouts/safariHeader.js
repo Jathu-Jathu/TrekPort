@@ -1,92 +1,111 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { DropdownButton, Dropdown, Image } from 'react-bootstrap';
-import { logout } from '../../actions/userActions';
-import { toast } from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Dropdown, Image } from "react-bootstrap";
+import { logout } from "../../actions/userActions";
+import { toast } from "react-toastify";
+import {
+    FaUser,
+    FaTachometerAlt,
+    FaCalendarCheck,
+    FaSafari,
+    FaSignOutAlt,
+    FaShoppingBag
+} from "react-icons/fa";
 
 export default function SafariHeader() {
-
-    const { isAuthenticated, user } = useSelector(state => state.authState);
-    const { items: cartItems } = useSelector(state => state.safariCartState);
+    const { isAuthenticated, user } = useSelector((state) => state.authState);
+    const { items: cartItems = [] } = useSelector((state) => state.safariCartState);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const logoutHandler = async () => {
         await dispatch(logout);
-        navigate('/login');
-        toast("Successfully Logged out!", {
+        navigate("/login");
+
+        toast("Successfully logged out!", {
             position: "top-center",
-            type: 'success'
+            type: "success"
         });
-    }
+    };
 
     return (
-        <nav className="navbar row d-flex align-items-center" style={{ padding: '8px 15px' }}>
-            {/* Left side - Logo */}
-            <div className="col-12 col-md-3">
-                <div className="navbar-brand">
-                    <Link to='/'>
-                        <img width="150px" alt='TourExperts Logo' src="/images/tourLogo1.png" />
-                    </Link>
-                </div>
-            </div>
-
-            {/* Center - Heading */}
-            <div className="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2 mt-md-0">
-                <Link to="/safaris" style={{ textDecoration: 'none' }}>
-                    <h1
-                        id="products_heading"
-                        style={{
-                            color: 'white',
-                            fontWeight: 'bold',
-                            fontSize: '36px',
-                            fontFamily: 'Arial, sans-serif',
-                            textAlign: 'center',
-                            textTransform: 'uppercase',
-                            margin: 0, // Ensure there's no margin around the heading
-                        }}
-                    >
-                        Trending Safaris
-                    </h1>
+        <nav className="navbar main-navbar safari-main-navbar">
+            <div className="container-fluid header-container">
+                <Link to="/" className="header-logo">
+                    <img src="/images/tourLogo1.png" alt="TrekPort Logo" />
                 </Link>
-            </div>
 
-            {/* Right side - User and Cart */}
-            <div className="col-12 col-md-3 d-flex justify-content-end align-items-center mt-4 mt-md-0 text-center">
-                {isAuthenticated ? (
-                    <Dropdown className='d-inline'>
-                        <Dropdown.Toggle variant='default text-white pr-5' id='dropdown-basic'>
-                            <div className='avatar-container'>
-                                <figure className='avatar avatar-nav avatar-circle'>
-                                    <Image width="50px" src={user?.avatar || '/images/default_avatar.png'}
+                <Link to="/safaris" className="safari-header-title">
+                    <FaSafari />
+                    <span>Trending Safaris</span>
+                </Link>
+
+                <div className="header-actions">
+                    {isAuthenticated ? (
+                        <Dropdown align="end" className="header-user-dropdown">
+                            <Dropdown.Toggle
+                                id="safari-profile-dropdown"
+                                className="header-profile-toggle"
+                            >
+                                <figure className="avatar avatar-nav avatar-circle">
+                                    <Image
+                                        src={user?.avatar || "/images/default_avatar.png"}
+                                        alt={user?.name || "User"}
                                         onError={(e) => {
                                             e.target.onerror = null;
-                                            e.target.src = '/images/default_avatar.png';
+                                            e.target.src = "/images/default_avatar.png";
                                         }}
                                     />
                                 </figure>
-                                <span>{user?.name}</span>
-                            </div>
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {user?.role == 'admin' && <Dropdown.Item onClick={() => { navigate('/admin/dashboard') }} className='text-dark'>Dashboard</Dropdown.Item>}
-                            <Dropdown.Item onClick={() => { navigate('/myprofile') }} className='text-dark'>Profile</Dropdown.Item>
-                            <Dropdown.Item onClick={() => { navigate('/bookings') }} className='text-dark'>Tour Bookings</Dropdown.Item>
-                            <Dropdown.Item onClick={() => { navigate('/safariBookings') }} className='text-dark'>Safari Bookings</Dropdown.Item>
-                            <Dropdown.Item onClick={logoutHandler} className='text-danger'>Log out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                ) :
-                    <Link to="/login" className="btn" id="login_btn">Login</Link>
-                }
+                                <span className="header-user-name">
+                                    {user?.name || "My Account"}
+                                </span>
+                            </Dropdown.Toggle>
 
-                <Link to='/safariCart' className="ml-3">
-                    <span id="cart">Safaris</span>
-                </Link>
-                <span className="ml-1" id="cart_count">{cartItems?.length}</span>
+                            <Dropdown.Menu className="header-dropdown-menu">
+                                {user?.role === "admin" && (
+                                    <Dropdown.Item onClick={() => navigate("/admin/dashboard")}>
+                                        <FaTachometerAlt /> Dashboard
+                                    </Dropdown.Item>
+                                )}
+
+                                <Dropdown.Item onClick={() => navigate("/myprofile")}>
+                                    <FaUser /> My Profile
+                                </Dropdown.Item>
+
+                                <Dropdown.Item onClick={() => navigate("/bookings")}>
+                                    <FaCalendarCheck /> Tour Bookings
+                                </Dropdown.Item>
+
+                                <Dropdown.Item onClick={() => navigate("/safariBookings")}>
+                                    <FaSafari /> Safari Bookings
+                                </Dropdown.Item>
+
+                                <Dropdown.Divider />
+
+                                <Dropdown.Item
+                                    onClick={logoutHandler}
+                                    className="header-logout"
+                                >
+                                    <FaSignOutAlt /> Log out
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    ) : (
+                        <Link to="/login" className="header-login-btn">
+                            Login
+                        </Link>
+                    )}
+
+                    <Link to="/safariCart" className="header-cart">
+                        <FaShoppingBag />
+                        <span className="header-cart-text">Cart</span>
+                        <span className="header-cart-count">
+                            {cartItems.length}
+                        </span>
+                    </Link>
+                </div>
             </div>
         </nav>
-    )
+    );
 }
-
